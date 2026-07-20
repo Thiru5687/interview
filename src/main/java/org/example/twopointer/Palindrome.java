@@ -1,0 +1,30 @@
+package main.java.org.example.twopointer;
+
+public class Palindrome {
+    public static void main(String[] args) {
+        String s = "madam";
+        if(isPalindrome(s)) {
+            System.out.println(s + " is palindrome");
+        } else {
+            System.out.println(s + " is not palindrome");
+        }
+    }
+
+    private static boolean isPalindrome(String s) {
+        int left = 0;
+        int right = s.length() - 1;
+
+        while(left < right){
+            while (left < right && !Character.isLetterOrDigit(s.charAt(left)))
+                left++;
+            while (left < right && !Character.isLetterOrDigit(s.charAt(right)))
+                right--;
+            if(Character.toLowerCase(s.charAt(left)) !=
+               Character.toLowerCase(s.charAt(right)))
+                return false;
+            left++;
+            right--;
+        }
+        return true;
+    }
+}
